@@ -1,32 +1,10 @@
-.mainContainer {
-    color: var(--primary);
-}
-
-.header {
-    height: 4rem;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Berkshire Swash', cursive;
-    font-size: 1.5rem;
-}
-
-.logo {
-    background-image: url("../../../public/images/sewing-machine.png");
-    background-size: cover;
-    margin-right: 2rem;
-    width: 2rem;
-    height: 2rem;
-}
-
-.body {
+.homeContainer {
     display: flex;
     flex-direction: column;
     height: calc(100vh - 4rem);
     justify-content: center;
     align-items: center;
-    font-family: 'Eczar', serif;
+    color: var(--primary);
 }
 
 .welcomeSection {
@@ -76,17 +54,7 @@
 }
 
 @media screen and (min-width: 1024px) {  
-    .header {
-       height: 6rem; 
-       font-size: 3rem;
-    }
-
-    .logo {
-        width: 3rem;
-        height: 3rem;
-    }
-
-    .body {
+    .homeContainer {
         height: calc(100vh - 6rem);
         flex-direction: row;
     }
