@@ -1,0 +1,63 @@
+.entryFieldContainer {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.label {
+    color: var(--primary);
+    margin-bottom: 0.3rem;
+}
+
+.inputField {
+    border: 1px solid var(--primary);
+    width: 100%;
+    padding: 1rem;
+    outline: none;
+    border-radius: 0.5rem;
+}
+
+.errorText {
+    color: red;
+}
+
+.dropdown {
+    width: 100%;
+    border: 1px solid var(--primary);
+    padding: 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: height 1s ease-in;
+    overflow: hidden;
+}
+
+.error {
+    border: 1px solid red;
+}
+
+.option {
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.option:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+.placeholder {
+    color: gray;
+}
+
+@media screen and (min-width: 1024px) {
+    .label {
+        font-size: 1.5rem;
+    }
+
+    .inputField {
+        padding: 1.5rem;
+    }
+    
+    .inputField::placeholder {
+        font-size: 1rem;
+    }
+}

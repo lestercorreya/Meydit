@@ -1,27 +1,23 @@
 import "./Home.css"
 
+import { Link } from "react-router-dom";
+
 const Home = () => {
   return (
-    <div className="mainContainer">
-      <div className="header">
-        <div className="logo"></div>
-        Meyd.it
+    <div className="homeContainer">
+      <div className="welcomeSection">
+        <div className="welcomeText">
+          Welcome
+          <div className="underline"></div>
+        </div>
       </div>
-      <div className="body">
-        <div className="welcomeSection">
-          <div className="welcomeText">
-            Welcome
-            <div className="underline"></div>
-          </div>
-        </div>
-        <div className="buttonsSection">
-          <div className="button1">
-            I'm a Maker
-          </div>
-          <div className="button2">
-            I'm a consumer
-          </div>
-        </div>
+      <div className="buttonsSection">
+        <Link className="button1" to="/enterDetails">
+          I'm a Maker
+        </Link>
+        <Link className="button2" to="/enterDetails">
+          I'm a Consumer
+        </Link>
       </div>
     </div>
   );
