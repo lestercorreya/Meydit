@@ -9,7 +9,7 @@ import './App.css';
 import Header from './components/Header/Header';
 
 import Home from './pages/Home/Home';
-import Details from './pages/Details/Details'
+import EnterDetails from './pages/EnterDetails/EnterDetails'
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
       <div className="App">
         <Header />
         <Routes>
-          <Route path='/details' element={<Details />} />
+          <Route path='/enterDetails' element={<EnterDetails />} />
           <Route path='/' element={<Home />} />
         </Routes>
       </div>

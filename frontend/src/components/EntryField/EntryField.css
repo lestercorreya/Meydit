@@ -16,6 +16,10 @@
     border-radius: 0.5rem;
 }
 
+.errorText {
+    color: red;
+}
+
 .dropdown {
     width: 100%;
     border: 1px solid var(--primary);
@@ -24,6 +28,10 @@
     cursor: pointer;
     transition: height 1s ease-in;
     overflow: hidden;
+}
+
+.error {
+    border: 1px solid red;
 }
 
 .option {
