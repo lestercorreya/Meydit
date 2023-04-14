@@ -26,7 +26,6 @@ type entryFieldOptionalPropsStructure =
 
 type entryFieldPropsStructure = entryFieldMandatoryPropsStructure & entryFieldOptionalPropsStructure
 
-
 const EntryField = (props: entryFieldPropsStructure) => {
   const { label, placeholder, type, options, onChange, field, error, value } = props
 

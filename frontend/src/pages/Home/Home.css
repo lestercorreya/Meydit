@@ -41,6 +41,8 @@
     width: 15rem;
     font-size: 1.5rem;
     cursor: pointer;
+    text-decoration: none;
+    color: var(--primary);
 }
 
 .button1:hover, .button2:hover {

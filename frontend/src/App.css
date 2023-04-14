@@ -12,4 +12,5 @@
 
 .App {
     font-family: 'Eczar', serif;
+    overflow-x: hidden;
 }
