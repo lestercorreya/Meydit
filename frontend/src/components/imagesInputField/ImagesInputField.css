@@ -16,10 +16,6 @@ input[type="file"] {
     border: 1px solid red;
 }
 
-.errorText {
-    color: red;
-}
-
 .label {
     color: var(--primary);
     margin-bottom: 0.3rem;

@@ -1,36 +1,38 @@
 import { useEffect, useState } from "react";
+
 import "./ImagesInputField.css"
 
+import DetailsInterface from "../../interfaces";
+
 interface imagesInputFieldInterface {
-  onChange: (input: FileList | null) => void,
-  uploadedImages: FileList | null,
-  error: boolean
+  onChange: <key extends keyof DetailsInterface>(field: key, input: DetailsInterface[key]) => void,
+  value: FileList | null | undefined,
+  error: boolean,
+  field: keyof DetailsInterface
 }
 
 const ImagesInputField = (props: imagesInputFieldInterface) => {
-  const { onChange, uploadedImages, error } = props
+  const { onChange, value, error, field } = props
 
   const [imageUrls, setImageUrls] = useState<string[]>([])
 
   useEffect(() => {
-    if (uploadedImages) {
+    if (value) {
       var newImages = []
-      for (var i = 0; i < uploadedImages.length; i++) {
-        newImages.push(URL.createObjectURL(uploadedImages[i]))
+      for (var i = 0; i < value.length; i++) {
+        newImages.push(URL.createObjectURL(value[i]))
         setImageUrls(newImages)
       }
     }
-  }, [uploadedImages])
+  }, [value])
 
   return (
     <div>
-      <div className="label">Images</div>
       <label className={error ? "fileUpload error" : "fileUpload"}>
-        <input type="file" onChange={(event) => onChange(event.target.files)} multiple />
-        Click to {uploadedImages ? "Re-Upload" : "Upload"}
+        <input type="file" onChange={(event) => onChange(field, event.target.files)} multiple />
+        Click to {value ? "Re-Upload" : "Upload"}
       </label>
-      {error && <div className="errorText">Upload Images</div>}
-      {uploadedImages && <div className="imageViewer">
+      {value && <div className="imageViewer">
         {
           imageUrls.map(url => {
             return (

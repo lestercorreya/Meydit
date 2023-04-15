@@ -1,27 +1,38 @@
-import { useState } from "react";
 import "./EntryField.css"
+
+import ImagesInputField from "../../components/imagesInputField/ImagesInputField";
+import Dropdown from "../Dropdown/Dropdown";
+
+import DetailsInterface from "../../interfaces";
 
 interface entryFieldMandatoryPropsStructure {
   label: string,
-  onChange: (input: string, field: string) => void,
-  field: string,
-  error: boolean,
-  value: string
+  onChange: <key extends keyof DetailsInterface>(field: key, input: DetailsInterface[key]) => void,
+  field: keyof DetailsInterface,
+  error: boolean
 }
 
 type entryFieldOptionalPropsStructure =
   | {
     type: "singleLine",
     placeholder: string,
-    options?: never
+    options?: never,
+    value: string | undefined
   } | {
     type: "multiLine",
     placeholder: string,
-    options?: never
+    options?: never,
+    value: string | undefined
   } | {
     type: "dropdown",
     placeholder: string,
-    options: Array<string>
+    options: Array<string>,
+    value: string | undefined
+  } | {
+    type: "inputImages",
+    placeholder?: never,
+    options?: never,
+    value: FileList | null | undefined
   }
 
 type entryFieldPropsStructure = entryFieldMandatoryPropsStructure & entryFieldOptionalPropsStructure
@@ -32,11 +43,13 @@ const EntryField = (props: entryFieldPropsStructure) => {
   const renderField = () => {
     switch (type) {
       case "singleLine":
-        return <input type="text" placeholder={placeholder} className={error ? "inputField error" : "inputField"} value={value} onChange={(event) => onChange(event.target.value, field)} />
+        return <input type="text" placeholder={placeholder} className={error ? "inputField error" : "inputField"} value={value} onChange={(event) => onChange(field, event.target.value)} />
       case "multiLine":
-        return <textarea cols={30} rows={5} className={error ? "inputField error" : "inputField"} placeholder={placeholder} value={value} onChange={(event) => onChange(event.target.value, field)}></textarea>
+        return <textarea cols={30} rows={5} className={error ? "inputField error" : "inputField"} placeholder={placeholder} value={value} onChange={(event) => onChange(field, event.target.value)}></textarea>
       case "dropdown":
         return <Dropdown options={options} onChange={onChange} field={field} value={value} error={error} placeholder={placeholder} />
+      case "inputImages":
+        return <ImagesInputField onChange={onChange} value={value} error={error} field={field} />
     }
   }
 
@@ -48,42 +61,5 @@ const EntryField = (props: entryFieldPropsStructure) => {
     </div>
   );
 };
-
-interface dropdownPropsStructure {
-  options: Array<string>,
-  placeholder: string,
-  onChange: (input: string, field: string) => void,
-  field: string,
-  value: string,
-  error: boolean
-}
-
-const Dropdown = (props: dropdownPropsStructure) => {
-  const { options, onChange, field, value, placeholder, error } = props
-
-  const [menuExpanded, setMenuExpanded] = useState(false)
-
-  const onClick = () => {
-    setMenuExpanded(!menuExpanded)
-  }
-
-  const onOptionClick = (option: string) => {
-    setMenuExpanded(false)
-    onChange(option, field)
-  }
-
-  return (
-    <div className={error ? "dropdown error" : "dropdown"}>
-      {value ? <div onClick={onClick}>{value}</div> : <div className="placeholder" onClick={onClick}>{placeholder}</div>}
-      <div className="options" style={{ display: menuExpanded ? "block" : "none" }}>
-        {options.map(option => {
-          return (
-            <div className="option" onClick={() => onOptionClick(option)}>{option}</div>
-          )
-        })}
-      </div>
-    </div>
-  )
-}
 
 export default EntryField;
