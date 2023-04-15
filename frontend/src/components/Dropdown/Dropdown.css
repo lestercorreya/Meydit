@@ -1,0 +1,27 @@
+.option {
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.option:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+.placeholder {
+    color: gray;
+}
+
+.dropdown {
+    width: 100%;
+    border: 1px solid var(--primary);
+    padding: 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: height 1s ease-in;
+    overflow: hidden;
+}
+
+.error {
+    border: 1px solid red;
+}
