@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 import "./EnterDetails.css"
 
@@ -42,6 +43,17 @@ const Details = () => {
     if (!errorIdentified) {
       console.log(details)
     }
+
+    axios.get('http://localhost:3333/api/jobs')
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
+        console.log("always excecuted")
+      });
   }
 
   const onChange = <key extends keyof DetailsInterface>(field: key, input: DetailsInterface[key]) => {
