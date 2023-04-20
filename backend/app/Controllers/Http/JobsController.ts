@@ -3,7 +3,7 @@ import Job from 'App/Models/Job'
 import { schema } from '@ioc:Adonis/Core/Validator'
 
 export default class JobsController {
-    public async index({ request, response }: HttpContextContract) {
+    public async index({ response }: HttpContextContract) {
         const jobs = await Job.all()
 
         response.status(200).json({
@@ -36,7 +36,7 @@ export default class JobsController {
         })
     }
 
-    public async show({ request, response }: HttpContextContract) {
+    public async show() {
 
     }
 
